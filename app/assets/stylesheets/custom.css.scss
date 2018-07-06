@@ -1,5 +1,5 @@
 
-$navbar-default-bg: black;
+$navbar-default-bg: pink;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -55,8 +55,7 @@ $navbar-default-bg: black;
 }
 
 .footer {
-  color: #fff;
-  background-color: #000000;
+  background-color: pink;
   margin-top: 45px;
   padding-top: 5px;
   color: #777;
@@ -82,4 +81,20 @@ $navbar-default-bg: black;
 .footer ul li {
   float: left;
   margin-left: 15px;
+}
+
+.description {
+  margin-top: 0;
+}
+
+.well a {
+  color: #d8457b;
+}
+
+.chef_info {
+  margin-top: 20px;
+}
+
+.colormatch a {
+  color: #d8457b;
 }
