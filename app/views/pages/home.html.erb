@@ -1,7 +1,11 @@
 <div class="jumbotron center">
   <h1>Welcome to MyRecipes!</h1>
   <h2>The best recipe sharing app!</h2>
+  
+  <% if !logged_in? %>
   <p><%= link_to "Sing up today",signup_path, class: "btn btn-primary btn-lg btn-xlarge" %></p>
+  <% end %>
+  
 </div>
 
 <div class="row">

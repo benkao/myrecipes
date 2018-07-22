@@ -2,20 +2,22 @@ require 'test_helper'
 
 class ChefsListingTest < ActionDispatch::IntegrationTest
   def setup
-    @chef = Chef.create!(chefname: "mashrur", email: "mashrur@example.com", password: "password", password_confirmation: "password")
-    @chef2 = Chef.create!(chefname: "john", email: "john@example.com", password: "password", password_confirmation: "password")
+   @chef = Chef.create!(chefname: "abc", email: "a@example.com", password: "password", password_confirmation: "password")
+   @chef2 = Chef.create!(chefname: "def", email: "b@example.com", password: "password", password_confirmation: "password")
+  
   end
   
-=begin
+
   test "should get chefs listing" do
     get chefs_path
     assert_template 'chefs/index'
-    assert_select "a[href=?]", chef_path(@chef), text: @chef.chefname.capitalize
-    assert_select "a[href=?]", chef_path(@chef2), text: @chef2.chefname.capitalize
+    assert_select "a[href=?]", chef_path(@chef), text: @chef.chefname
+    assert_select "a[href=?]", chef_path(@chef2), text: @chef2.chefname
   end
-=end
+
 
   test "should delete chef" do
+    sign_in_as(@chef, "password")
     get chefs_path
     assert_template 'chefs/index'
     assert_difference 'Chef.count', -1 do
