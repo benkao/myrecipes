@@ -58,8 +58,8 @@ private
   end
   
   def require_same_user
-   if current_chef != @recipe.chef
-      flash[:danger] = "Action denied! You are edit or delete your own recipe."
+   if current_chef != @recipe.chef and !current_chef.admin?
+      flash[:danger] = "Action denied! You can only edit or delete your own recipe."
       redirect_to recipes_path
    end 
   end
