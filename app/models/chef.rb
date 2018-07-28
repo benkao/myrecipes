@@ -5,8 +5,9 @@ class Chef < ApplicationRecord
     validates :email, presence: true, length: {maximum: 255},
                       format: {with: VALID_EMAIL_REGEX},
                       uniqueness: {case_sensitive: false}
-    has_many :recipes, dependent: :destroy
+    has_many :recipes, dependent: :destroy #when the chef was deleted, his/her recipe(s) would be deleted as well
     has_secure_password
     validates :password, presence: true, length: {minimum: 5}, allow_nil: true
-    default_scope -> {order(updated_at: :desc)}
+    default_scope -> {order(updated_at: :desc)} #lastest chef shows first
+    has_many :comments, dependent: :destroy #when the chef was deleted, his/her comment(s) would be deleted as well
 end
