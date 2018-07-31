@@ -17,6 +17,7 @@ class ChefsController < ApplicationController
     @chef = Chef.new(chef_params)
     if @chef.save
       session[:chef_id] = @chef.id
+      cookies.signed[:chef_id] = @chef.id #when sign up , the new chef is able to use instant message as well
       flash[:success] = "Welcome #{@chef.chefname} to MyRecipes App!"
       redirect_to chef_path(@chef)
     else

@@ -6,8 +6,11 @@ class CommentsController < ApplicationController
     @comment = @recipe.comments.build(comment_params)
     @comment.chef = current_chef #that's why before_action :require_uer is needed
     if @comment.save
-     flash[:success] = "Comment was create successfully."
-     redirect_to recipe_path(@recipe)
+     ActionCable.server.broadcast "comments", render(partial: 'comments/comment', object: @comment)
+     #"comments" is channel, render what to display, showing saved info at @comment
+     
+     #flash[:success] = "Comment was create successfully." 
+     #redirect_to recipe_path(@recipe)
     else
      flash[:danger] = "Comment was not created."
      redirect_to :back 
