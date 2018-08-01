@@ -86,5 +86,5 @@ Rails.application.configure do
   
   # for deploying app with action cable to heroku
   config.web_socket_server_url = "wss://benkao-myrecipes.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://benkao-myrecipes.herokuapp.com/','http://benkao-myrecipes.herokuapp.com/']
+  config.action_cable.allowed_request_origins = ['https://benkao-myrecipes.herokuapp.com','http://benkao-myrecipes.herokuapp.com']
 end
