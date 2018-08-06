@@ -6,5 +6,6 @@ App.comments = App.cable.subscriptions.create "CommentsChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) -> 
-    $("#messages").prepend(data)
-    # Called when there's incoming data on the websocket for this channel
+    $("#messages .comment-fix:first").prepend(data)
+    # add comment-fix from _comments.html.erb
+    #add .comment-fix:first to make recipe comments stay within paginates 

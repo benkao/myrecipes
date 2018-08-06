@@ -1,0 +1,21 @@
+<%= render 'shared/page_title', title: 'ChefChat' %>
+
+<div class="row chat-container">
+  <div class= "col-md-8 center-block">
+    <div class="messages" id="messages">
+      <%= render @messages %> 
+      <!-- looks for message partial in message folder under view and run through list of messages. ref to comments/comment partials in view-->
+    </div>
+  
+  
+    <hr />
+    <div class="message-container">
+      <!--step 2: "remote: true" is for submission with the advantage of Ajax, next step: broadcast at messages_controller -->
+      <%= form_for(@message, remote: true, :html => {class: "form-horizontal", role: "form"}) do |f| %> <!--Boostrap form attributes-->
+        <!--set data behavior and send for jquery-->
+        <%= f.text_area :content, class: "form-control", data: {behavior: "room_speaker"}, placeholder: "Enter your comment here." %>
+        <%= f.submit "Send", class: "btn btn-primary", data: {send: "message"} %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -15,3 +15,33 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+//event listner for data behavior / send from chatrooms/show.html.erb under views
+$(document).on('keypress','[data-behavior~=room_speaker]',function(veent){
+  if (event.keyCode == 13){ //enter key
+    submitMmessage(event);
+  }
+});
+
+$(document).on('click','[data-send~=message]',function(veent){
+    submitMmessage(event);
+});
+
+function submitMmessage(event) {
+  event.preventDefault();
+  $('#new_message').submit();
+}
+
+$(document).ready(function(){  //when page loads, calling scrollToBottom function
+  $("#new_message").on("ajax:complete", function(e, data, status) {
+    $('#message_content').val('');
+  })
+  scrollToBottom();
+});
+
+function scrollToBottom(){
+  if($('#messages').length > 0 ) {  // grap event listener id="messages" in chatrooms/show.html.erb
+    $('#messages').scrollTop($('#messages')[0].scrollHeight);
+  }
+}

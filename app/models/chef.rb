@@ -10,4 +10,5 @@ class Chef < ApplicationRecord
     validates :password, presence: true, length: {minimum: 5}, allow_nil: true
     default_scope -> {order(updated_at: :desc)} #lastest chef shows first
     has_many :comments, dependent: :destroy #when the chef was deleted, his/her comment(s) would be deleted as well
+    has_many :messages, dependent: :destroy
 end
