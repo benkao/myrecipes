@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
     if @message.save
       #step 3: replace chat_path with broadcast, next step: add event listener in javascripts/chatroom.coffee
       #redirect_to chat_path
-      ActionCable.server.broadcast 'chatroom', message: render_message(@message), #different technique used in comments_controller
+      ActionCable.server.broadcast 'chatroom_channel', message: render_message(@message), #different technique used in comments_controller
                                                         chef: @message.chef.chefname
     else                                               
       render 'chatrooms/show'
