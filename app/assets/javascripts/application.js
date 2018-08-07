@@ -15,7 +15,7 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-
+//= require_tree ./channels
 
 //event listner for data behavior / send from chatrooms/show.html.erb under views
 $(document).on('keypress','[data-behavior~=room_speaker]',function(veent){
