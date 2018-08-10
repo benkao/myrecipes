@@ -11,4 +11,5 @@ class Chef < ApplicationRecord
     default_scope -> {order(updated_at: :desc)} #lastest chef shows first
     has_many :comments, dependent: :destroy #when the chef was deleted, his/her comment(s) would be deleted as well
     has_many :messages, dependent: :destroy
+    has_many :likes, dependent: :destroy
 end

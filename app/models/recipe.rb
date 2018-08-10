@@ -7,5 +7,15 @@ class Recipe < ApplicationRecord
   has_many :recipe_ingredients
   has_many :ingredients, through: :recipe_ingredients
   has_many :comments, dependent: :destroy #when the recipe was deleted, the comment(s) would be deleted as well
+  has_many :likes, dependent: :destroy
+  
+  def thumbs_up_total
+    self.likes.where(like: true).size
+  end
+  
+  def thumbs_down_total
+    self.likes.where(like: false).size
+  end
+  
 end
 

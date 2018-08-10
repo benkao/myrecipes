@@ -6,6 +6,7 @@ test:
 
 production:
   adapter: redis
-  <%= ENV["REDIS_URL"] %>
+  url: <%= ENV["REDIS_URL"] %>
+
   #url: redis://redistogo:55a72f518c4ea62f4291cddee0ea67bf@cod.redistogo.com:11377/
   #for deploying app with action cable to heroku
